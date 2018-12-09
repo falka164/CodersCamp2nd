@@ -3,33 +3,32 @@ import Town from "./TownClass";
 let city = new Town('Wroclaw', 'pl', '0b72f178992e5ddc7fa93b511b4a5dff');
 city.createLink();
 city.getJSONfromAPI().then(function (response) {
-    let weatherDesc 
-        switch (response.data.weather[0].description) {
-            case response.data.weather[0].description === "clear sky":
+    let weatherDesc = response.data.weather[0].description;
+        switch (weatherDesc) {
+            case "clear sky":
                 console.log ("czyste niebo");
                 break;
-            case response.data.weather[0].description === "few clouds":
+            case "few clouds":
                 console.log("lekkie zachmurzenie");
                 break;
-            case response.data.weather[0].description === "scattered clouds":
+            case "scattered clouds":
                 console.log("rozproszone");
                 break;
             case "broken clouds":
                 console.log("zachmurzenie");
                 break;
-            case response.data.weather[0].description === "shower rain":
+            case "shower rain":
                 console.log("mrzawka");
                 break;
-            case response.data.weather[0].description === "rain":
+            case "rain":
                 console.log("pada");
                 break;
-            case response.data.weather[0].description === "thunderstorm":
+            case  "thunderstorm":
                 console.log("burza");
 				default :
 				console.log("hgfhg");
 		}
-	
-    ;
+
 
 
     let tempDesc = (response.data.main.temp - 273.15);
