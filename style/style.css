@@ -1,0 +1,36 @@
+.forecasts {
+    padding: 1.5% 12%;
+    display: grid;
+    grid-gap: 2% 2%;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: auto;
+    justify-content: space-around;
+}
+
+#background>div {
+    height: 300px;
+}
+
+div #documentIconImg {
+    object-fit: cover;
+}
+
+#in0daysIconImg {
+    object-fit: cover;
+}
+#in5daysIconImg {
+    object-fit: cover;
+}
+
+.in5days div {
+    text-align: center;
+}
+.now div {
+    text-align: center;
+}
+.in5days h2 {
+    text-align: center;
+}
+.now h1 {
+    text-align: center;
+}
