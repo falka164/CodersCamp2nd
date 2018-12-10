@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiLink = 'http://api.openweathermap.org/data/2.5/weather?q=';
-const apiLink2 = 'http://api.openweathermap.org/data/2.5/forecast?q='
+const apiLink2 = 'http://api.openweathermap.org/data/2.5/forecast?q=';
 
 export default class Background {
     constructor(city, countryShortcut, apiKey) {
