@@ -19,61 +19,54 @@ export default class CityGetter {
     }
 
     weather = function (desc) {
-        console.log("showWeaherDesc");
+        console.log("showWeatherDesc");
         let weatherIcon = document.getElementById("documentIconImg");
         switch (desc) {
             case "clear sky":
                 console.log("czyste niebo");
                 this.generateData('data1', "czyste niebo");
-                var i = document.createElement('i');
-                div.setAttribute('class', 'fas fa-sun');
-                document.body.section.div.appendChild(i);
                 break;
             case "few clouds":
                 console.log("lekkie zachmurzenie");
                 this.generateData('data1', "lekkie zachmurzenie");
-                var i = document.createElement('i');
-                div.setAttribute('class', 'fas fa-cloud-sun');
-                document.body.section.div.appendChild(i);
                 break;
             case "scattered clouds":
                 console.log("rozproszone");
                 this.generateData('data1', "rozproszone");
-                var i = document.createElement('i');
-                div.setAttribute('class', 'fas fa-cloud');
-                document.body.section.div.appendChild(i);
                 break;
             case "broken clouds":
                 console.log("zachmurzenie");
                 this.generateData('data1', "zachmurzenie");
-                var i = document.createElement('i');
-                div.setAttribute('class', 'fas fa-cloud');
-                document.body.section.div.appendChild(i);
                 break;
             case "shower rain":
                 console.log("mrzawka");
                 this.generateData('data1', "mrzawka");
-                var i = document.createElement('i');
-                div.setAttribute('class', 'fas fa-cloud-sun-rain');
-                document.body.section.div.appendChild(i);
                 break;
             case "rain":
                 console.log("pada");
                 this.generateData('data1', "pada");
-                var i = document.createElement('i');
-                div.setAttribute('class', 'fas fa-cloud-showers-heavy');
-                document.body.section.div.appendChild(i);
                 break;
             case  "thunderstorm":
                 console.log("burza");
                 this.generateData('data1', "burza");
-                var i = document.createElement('i');
-                div.setAttribute('class', 'fas fa-cloud-meatball');
-                document.body.section.div.appendChild(i);
             default :
                 console.log("hgfhg");
         }
     };
+
+    // set5Background() {
+    //     this.getJSONfromAPI5().then(function (response) {
+    //         let weatherIcon = document.getElementById("in5daysIconImg");
+    //         weatherIcon.src = "http://openweathermap.org/img/w/" + response.data.list[0].weather[0].icon + ".png";
+    //     });
+    // }
+
+    // set5Temp() {
+    //     this.getJSONfromAPI5().then(function (response) {
+    //         let forecastsTempIn3Days = document.getElementById("in5daysTemperature");
+    //         forecastsTempIn3Days.innerHTML = Math.floor(response.data.list[0].main.temp) + '&#176' + 'C';
+    //     });
+    // }
 
     searchBtn() {
         this.clearContainer();
@@ -94,7 +87,10 @@ export default class CityGetter {
                 console.log(response);
                 this.weather(response.data.weather[0].description);
                 this.generateList(response.data);
-
+                let forecastsTempIn0Days = document.getElementById("in0daysTemperature");
+                forecastsTempIn0Days.innerHTML = Math.floor(response.data.main.temp - 273.15) + '&#176' + 'C';
+                let weatherIcon = document.getElementById("in0daysIconImg");
+                weatherIcon.src = "http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png";
             })
             .catch(function (error) {
                 console.log(error);
