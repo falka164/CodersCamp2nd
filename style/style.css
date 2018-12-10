@@ -63,3 +63,23 @@ body {
     padding: 0 6px;
     font-weight: bold;
 }
+#data1 {
+	color: red;
+}
+
+#data2 {
+	color: yellowgreen;
+	text-transform: uppercase;
+}
+
+#data3 {
+	color: orange;
+}
+
+#data4 {
+	color: blue;
+}
+
+#data5:hover {
+	color: deeppink;
+}

@@ -96,6 +96,7 @@ export default class CityGetter {
         this.generateData('data2', tempDesc);
         let data2 = document.getElementById('data2');
         data2.innerHTML = "Tempereatura:  " + data2.innerHTML + " °C";
+        this.getDataListAndShowMagic();
 
         let pressureDesc = data.main.pressure;
         this.generateData('data3', pressureDesc);
@@ -124,6 +125,16 @@ export default class CityGetter {
         while (container.firstChild) {
             container.removeChild(container.firstChild);
         }
+    }
+///------------------------------------ poniżej kod dla Michała -------------------------------------
+
+    doMagic() {
+        let m = document.getElementById("data2");
+        m.firstChild.nodeValue = "Wow wow wow so much wow";
+    }
+    getDataListAndShowMagic() {
+        let magic = document.getElementById('data1');
+        magic.addEventListener('click', this.doMagic)
     }
 
 };
