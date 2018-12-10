@@ -25,35 +25,38 @@ export default class CityGetter {
             case "clear sky":
                 console.log("czyste niebo");
                 this.generateData('data1', "czyste niebo");
-                this.createRain();
-
+                this.createSun(0);
                 break;
             case "few clouds":
                 console.log("lekkie zachmurzenie");
                 this.generateData('data1', "lekkie zachmurzenie");
-                this.createRain();
+                this.createClouds(3);
                 break;
             case "scattered clouds":
                 console.log("rozproszone");
                 this.generateData('data1', "rozproszone");
+                this.createClouds(6);
                 break;
             case "broken clouds":
                 console.log("zachmurzenie");
                 this.generateData('data1', "zachmurzenie");
-
+                this.createClouds(9);
                 break;
             case "shower rain":
                 console.log("mrzawka");
                 this.generateData('data1', "mrzawka");
+                this.createRain(50);
                 break;
             case "rain":
                 console.log("pada");
                 this.generateData('data1', "pada");
+                this.createRain(500);
                 break;
-            case  "thunderstorm":
+            case "thunderstorm":
                 console.log("burza");
                 this.generateData('data1', "burza");
-            default :
+                this.createRain(800);
+            default:
                 console.log("hgfhg");
         }
     };
@@ -128,10 +131,21 @@ export default class CityGetter {
             container.removeChild(container.firstChild);
         }
     }
-     createRain() {
-        let backG = new BackgroundGenerator(100);
+    createRain(number) {
+        let backG = new BackgroundGenerator(number);
         backG.createRain();
-
+    }
+    createSnow(number) {
+        let backG = new BackgroundGenerator(number);
+        backG.createSnow();
+    }
+    createClouds(number) {
+        let backG = new BackgroundGenerator(number);
+        backG.createClouds();
+    }
+    createSun(number) {
+        let backG = new BackgroundGenerator(number);
+        backG.createSun();
     }
 
 };

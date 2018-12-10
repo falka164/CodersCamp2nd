@@ -49,7 +49,7 @@ body {
 
 }
 
-#click > i {
+#click>i {
     font-size: 30px;
 }
 
@@ -75,7 +75,7 @@ body {
     justify-content: space-around;
 }
 
-#background > div {
+#background>div {
     height: 300px;
 }
 
@@ -109,7 +109,7 @@ div #documentIconImg {
     text-align: center;
 }
 
-.forecasts > div {
+.forecasts>div {
     background-color: rgba(0, 0, 0, 0.25);
     box-shadow: 1px 1px 5px black;
     padding: 50px;
@@ -117,13 +117,12 @@ div #documentIconImg {
 }
 
 .rain {
-background: cornflowerblue;
+    background: cornflowerblue;
 
     overflow: hidden;
 }
 
 .drop {
-
     width: 1px;
     height: 89px;
     position: absolute;
@@ -131,6 +130,74 @@ background: cornflowerblue;
     -webkit-animation: fall .63s linear infinite;
     -moz-animation: fall .63s linear infinite;
     animation: fall .63s linear infinite;
+}
+
+.sun {
+    width: 1px;
+    height: 89px;
+    position: absolute;
+    bottom: 200px;
+    -webkit-animation: rotate 6.63s linear infinite;
+    -moz-animation: rotate 6.63s linear infinite;
+    animation: rotate 6.63s linear infinite;
+}
+
+.move {
+    width: 1px;
+    height: 89px;
+    position: absolute;
+    bottom: 200px;
+    -webkit-animation: sides 10.63s linear infinite;
+    -moz-animation: sides 10.63s linear infinite;
+    animation: sides 10.63s linear infinite;
+}
+
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes rotate {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes sides {
+    0% {
+        transform: translateX(150px);
+    }
+
+    50% {
+        transform: translateX(-300px);
+    }
+
+    100% {
+        transform: translateX(150px);
+    }
+}
+
+@-moz-keyframes sides {
+    0% {
+        transform: translateX(150px);
+    }
+
+    50% {
+        transform: translateX(-300px);
+    }
+
+    100% {
+        transform: translateX(150px);
+    }
 }
 
 @-webkit-keyframes fall {
@@ -144,4 +211,3 @@ background: cornflowerblue;
         margin-top: 900px;
     }
 }
-
