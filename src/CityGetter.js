@@ -1,4 +1,5 @@
 import axios from 'axios';
+import BackgroundGenerator from './BackgroundGenerator';
 
 const apiLink = 'https://api.openweathermap.org/data/2.5/weather?q=';
 
@@ -20,15 +21,17 @@ export default class CityGetter {
 
     weather = function (desc) {
         console.log("showWeatherDesc");
-        let weatherIcon = document.getElementById("documentIconImg");
         switch (desc) {
             case "clear sky":
                 console.log("czyste niebo");
                 this.generateData('data1', "czyste niebo");
+                this.createRain();
+
                 break;
             case "few clouds":
                 console.log("lekkie zachmurzenie");
                 this.generateData('data1', "lekkie zachmurzenie");
+                this.createRain();
                 break;
             case "scattered clouds":
                 console.log("rozproszone");
@@ -37,6 +40,7 @@ export default class CityGetter {
             case "broken clouds":
                 console.log("zachmurzenie");
                 this.generateData('data1', "zachmurzenie");
+
                 break;
             case "shower rain":
                 console.log("mrzawka");
@@ -53,20 +57,6 @@ export default class CityGetter {
                 console.log("hgfhg");
         }
     };
-
-    // set5Background() {
-    //     this.getJSONfromAPI5().then(function (response) {
-    //         let weatherIcon = document.getElementById("in5daysIconImg");
-    //         weatherIcon.src = "http://openweathermap.org/img/w/" + response.data.list[0].weather[0].icon + ".png";
-    //     });
-    // }
-
-    // set5Temp() {
-    //     this.getJSONfromAPI5().then(function (response) {
-    //         let forecastsTempIn3Days = document.getElementById("in5daysTemperature");
-    //         forecastsTempIn3Days.innerHTML = Math.floor(response.data.list[0].main.temp) + '&#176' + 'C';
-    //     });
-    // }
 
     searchBtn() {
         this.clearContainer();
@@ -87,10 +77,6 @@ export default class CityGetter {
                 console.log(response);
                 this.weather(response.data.weather[0].description);
                 this.generateList(response.data);
-                let forecastsTempIn0Days = document.getElementById("in0daysTemperature");
-                forecastsTempIn0Days.innerHTML = Math.floor(response.data.main.temp - 273.15) + '&#176' + 'C';
-                let weatherIcon = document.getElementById("in0daysIconImg");
-                weatherIcon.src = "http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png";
             })
             .catch(function (error) {
                 console.log(error);
@@ -141,6 +127,11 @@ export default class CityGetter {
         while (container.firstChild) {
             container.removeChild(container.firstChild);
         }
+    }
+     createRain() {
+        let backG = new BackgroundGenerator(100);
+        backG.createRain();
+
     }
 
 };
