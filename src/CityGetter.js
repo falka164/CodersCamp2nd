@@ -2,6 +2,7 @@ import axios from 'axios';
 import BackgroundGenerator from './BackgroundGenerator';
 
 const apiLink = 'https://api.openweathermap.org/data/2.5/weather?q=';
+const apiLink5days = 'https://api.openweathermap.org/data/2.5/forecast?q=';
 
 export default class CityGetter {
     constructor(city, countryShortcut, apiKey) {
@@ -13,6 +14,15 @@ export default class CityGetter {
     createLink() {
         let link = `${apiLink}${this.city},${this.countryShotcut}&APPID=${this.apiKey}`;
         return link;
+    }
+
+    createLink5days() {
+        let link = `${apiLink5days}${this.city},${this.countryShotcut}&APPID=${this.apiKey}`;
+        return link;
+    }
+
+    getJSONfromAPI5days() {
+        return axios.get(this.createLink5days());
     }
 
     getJSONfromAPI() {
@@ -80,6 +90,7 @@ export default class CityGetter {
                 console.log(response);
                 this.weather(response.data.weather[0].description);
                 this.generateList(response.data);
+                this.generateList0days(response.data);
             })
             .catch(function (error) {
                 console.log(error);
@@ -87,6 +98,18 @@ export default class CityGetter {
                 errMsg.textContent = "Podano złą nazwę miasta...";
                 document.getElementById('err').appendChild(errMsg);
             });
+
+            this.getJSONfromAPI5days()
+                .then((response) => {
+                    console.log(response);
+                    this.generateList5days(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    let errMsg = document.createElement("div");
+                    errMsg.textContent = "Podano złą nazwę miasta...";
+                    document.getElementById('err').appendChild(errMsg);
+                });
 
     }
 
@@ -97,11 +120,39 @@ export default class CityGetter {
         document.getElementById("dataBox").appendChild(data);
     }
 
+    generateData5days(x, content) {
+        let data = document.createElement('p');
+        data.id = x;
+        data.innerHTML = content.toString();
+        document.getElementById("in5daysTemperature").appendChild(data);
+    }
+
+    generateData0days(x, content) {
+        let data = document.createElement('p');
+        data.id = x;
+        data.innerHTML = content.toString();
+        document.getElementById("in0daysTemperature").appendChild(data);
+    }
+
+    generateList5days = function (data) {
+        let tempDesc = (data.list[0].main.temp - 273.15);
+        this.generateData5days('data7', tempDesc);
+        let data7 = document.getElementById('data7');
+        data7.innerHTML = "Temperatura:  " + data7.innerHTML + "°C";
+    }
+
+    generateList0days = function (data) {
+        let tempDesc = (data.main.temp - 273.15);
+        this.generateData0days('data8', tempDesc);
+        let data8 = document.getElementById('data8');
+        data8.innerHTML = "Temperatura:  " + data8.innerHTML + "°C";
+    }
+
     generateList = function (data) {
         let tempDesc = (data.main.temp - 273.15);
         this.generateData('data2', tempDesc);
         let data2 = document.getElementById('data2');
-        data2.innerHTML = "Tempereatura:  " + data2.innerHTML + " °C";
+        data2.innerHTML = "Tempereatura:  " + data2.innerHTML + "°C";
 
         let pressureDesc = data.main.pressure;
         this.generateData('data3', pressureDesc);

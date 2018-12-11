@@ -8,7 +8,7 @@ export default class BackgroundGenerator {
     }
     createClouds() {
         for (let i = 1; i < this.dropNum; i++) {
-            let dropLeft = this.randRange(200, 1200);
+            let dropLeft = this.randRange(500, 1200);
             let dropTop = this.randRange(0, 450);
 
             $('.dropItems').append('<i class="move fab fa-mixcloud fa-7x" id="move' + i + '"></i>');
@@ -37,7 +37,7 @@ export default class BackgroundGenerator {
         }
     }
     createSun() {
-        $('.dropItems').append('<i class="sun fas fa-sun fa-10x" id="sun' + '"></i>');
+        $('.dropItems').append('<i class="sun fab fa-ussunnah fa-10x" id="sun' + '"></i>');
         $('#sun').css('left', 1200);
         $('#sun').css('top', 200);
     }
