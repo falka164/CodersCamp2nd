@@ -57,11 +57,11 @@ export default class CityGetter {
                 console.log("hgfhg");
         }
     };
-    
+ // ------pobieranie id pogody------
     weatherId = function(id) {
         console.log(id);
       switch (id) {
-          case 600:
+          case id >=600 && id <=622:
               console.log("yeyeyeyeyeyeyeyeyeye");
               break;
       }  
@@ -85,7 +85,7 @@ export default class CityGetter {
             .then((response) => {
                 console.log(response);
                 this.weather(response.data.weather[0].description);
-                this.weatherId(response.data.weather[0].id);
+                this.weatherId(response.data.weather[0].id); //pobieranie id pogody
                 this.generateList(response.data);
 
             })
