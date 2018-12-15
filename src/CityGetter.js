@@ -49,9 +49,22 @@ export default class CityGetter {
             case  "thunderstorm":
                 console.log("burza");
                 this.generateData('data1', "burza");
+                break;
+            case "light snow":
+                console.log("pada śnieg ");
+                this.generateData('data1', "śnieg pada");
             default :
                 console.log("hgfhg");
         }
+    };
+    
+    weatherId = function(id) {
+        console.log(id);
+      switch (id) {
+          case 600:
+              console.log("yeyeyeyeyeyeyeyeyeye");
+              break;
+      }  
     };
 
     searchBtn() {
@@ -72,6 +85,7 @@ export default class CityGetter {
             .then((response) => {
                 console.log(response);
                 this.weather(response.data.weather[0].description);
+                this.weatherId(response.data.weather[0].id);
                 this.generateList(response.data);
 
             })
@@ -96,7 +110,7 @@ export default class CityGetter {
         this.generateData('data2', tempDesc);
         let data2 = document.getElementById('data2');
         data2.innerHTML = "Tempereatura:  " + data2.innerHTML + " °C";
-        this.getDataListAndShowMagic();
+       // this.getDataListAndShowMagic();
 
         let pressureDesc = data.main.pressure;
         this.generateData('data3', pressureDesc);
@@ -128,13 +142,13 @@ export default class CityGetter {
     }
 ///------------------------------------ poniżej kod dla Michała -------------------------------------
 
-    doMagic() {
+  /*  doMagic() {
         let m = document.getElementById("data2");
         m.firstChild.nodeValue = "Wow wow wow so much wow";
     }
     getDataListAndShowMagic() {
         let magic = document.getElementById('data1');
         magic.addEventListener('click', this.doMagic)
-    }
+    }*/
 
 };
