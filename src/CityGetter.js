@@ -56,12 +56,13 @@ export default class CityGetter {
             default :
                 console.log("hgfhg");
         }
+
     };
  // ------pobieranie id pogody------
-    weatherId = function(id) {
-        console.log(id);
-      switch (id) {
-          case id >=600 && id <=622:
+    weatherId = function(mojaFantastycznaZmiennaId) {
+        console.log(mojaFantastycznaZmiennaId);
+      switch (mojaFantastycznaZmiennaId) {
+          case mojaFantastycznaZmiennaId >=600 && mojaFantastycznaZmiennaId <=622:
               console.log("yeyeyeyeyeyeyeyeyeye");
               break;
       }  
