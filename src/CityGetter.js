@@ -29,45 +29,41 @@ export default class CityGetter {
         return axios.get(this.createLink());
     }
 
-    weather = function (desc) {
-        console.log("showWeatherDesc");
-        switch (desc) {
-            case "clear sky":
-                console.log("czyste niebo");
-                this.generateData('data1', "czyste niebo");
-                this.createSun(0);
-                break;
-            case "few clouds":
-                console.log("lekkie zachmurzenie");
-                this.generateData('data1', "lekkie zachmurzenie");
-                this.createClouds(3);
-                break;
-            case "scattered clouds":
-                console.log("rozproszone");
-                this.generateData('data1', "rozproszone");
-                this.createClouds(6);
-                break;
-            case "broken clouds":
-                console.log("zachmurzenie");
-                this.generateData('data1', "zachmurzenie");
-                this.createClouds(9);
-                break;
-            case "shower rain":
-                console.log("mrzawka");
-                this.generateData('data1', "mrzawka");
-                this.createRain(50);
-                break;
-            case "rain":
-                console.log("pada");
-                this.generateData('data1', "pada");
-                this.createRain(500);
-                break;
-            case "thunderstorm":
-                console.log("burza");
-                this.generateData('data1', "burza");
-                this.createRain(800);
-            default:
-                console.log("hgfhg");
+    weatherId = function (id) {
+        console.log(id);
+
+        if (id >= 600 && id <= 622) {
+            console.log("Śnieg");
+            this.createSnow(200);
+            this.generateData('data1', "Śnieg");
+        } else if (id == 800) {
+            console.log("Czyste niebo");
+            this.createSun(0);
+            this.generateData('data1', "Czyste niebo");
+        } else if (id >= 801 && id <= 805) {
+            console.log("Lekkie zachmurzenie");
+            this.createClouds(3);
+            this.generateData('data1', "Lekkie zachmurzenie");
+        } else if (id >= 701 && id < 782) {
+            console.log("Możliwa mgła");
+            this.createClouds(9);
+            this.generateData('data1', "Możliwa mgła");
+        } else if (id >= 500 && id < 532) {
+            console.log("Deszcz");
+            this.createRain(500);
+            this.generateData('data1', "Deszcz");
+        } else if (id >= 300 && id < 322) {
+            console.log("Mżawka");
+            this.createClouds(3);
+            this.createRain(50);
+            this.generateData('data1', "Mżawka");
+        } else if (id >= 200 && id < 233) {
+            console.log("Burza");
+            this.createRain(800);
+            this.generateData('data1', "Burza");
+        } else {
+            console.log("Something went wrong.....");
+            this.generateData('data1', "Something went wrong.....");
         }
     };
 
@@ -88,7 +84,7 @@ export default class CityGetter {
         this.getJSONfromAPI()
             .then((response) => {
                 console.log(response);
-                this.weather(response.data.weather[0].description);
+                this.weatherId(response.data.weather[0].id);
                 this.generateList(response.data);
                 this.generateList0days(response.data);
             })
@@ -141,7 +137,7 @@ export default class CityGetter {
         weatherIcon.src = "http://openweathermap.org/img/w/" + iconDesc + ".png";
         this.generateData5days('data7', tempDesc);
         let data7 = document.getElementById('data7');
-        data7.innerHTML = "Temperatura:  " + data7.innerHTML + "°C";
+        data7.innerHTML = "Temperatura:  " + data7.innerHTML + " °C";
     }
 
     generateList0days = function (data) {
@@ -151,14 +147,14 @@ export default class CityGetter {
         weatherIcon.src = "http://openweathermap.org/img/w/" + iconDesc + ".png";
         this.generateData0days('data8', tempDesc);
         let data8 = document.getElementById('data8');
-        data8.innerHTML = "Temperatura:  " + data8.innerHTML + "°C";
+        data8.innerHTML = "Temperatura:  " + data8.innerHTML + " °C";
     }
 
     generateList = function (data) {
-        let tempDesc = (data.main.temp - 273.15);
+        let tempDesc = (data.main.temp - 273.15).toFixed(2);
         this.generateData('data2', tempDesc);
         let data2 = document.getElementById('data2');
-        data2.innerHTML = "Tempereatura:  " + data2.innerHTML + "°C";
+        data2.innerHTML = "Temperatura:  " + data2.innerHTML + " °C";
 
         let pressureDesc = data.main.pressure;
         this.generateData('data3', pressureDesc);
