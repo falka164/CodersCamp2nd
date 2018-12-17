@@ -10,6 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: -3;
 }
 
 #err {
@@ -20,7 +21,6 @@ body {
 }
 
 #cityBox {
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,6 +29,11 @@ body {
     border-radius: 40px;
     padding: 10px;
     margin-bottom: 2%;
+    z-index: 1;
+}
+
+#dataBox{
+    z-index: 1;
 }
 
 #click:hover {
@@ -123,7 +128,6 @@ div #documentIconImg {
     height: 89px;
     position: absolute;
     bottom: 200px;
-    z-index: 1;
     -webkit-animation: fall .63s linear infinite;
     -moz-animation: fall .63s linear infinite;
     animation: fall .63s linear infinite;
@@ -135,7 +139,6 @@ div #documentIconImg {
     height: 89px;
     position: absolute;
     bottom: 200px;
-    z-index: 1;
     -webkit-animation: rotate 6.63s linear infinite;
     -moz-animation: rotate 6.63s linear infinite;
     animation: rotate 6.63s linear infinite;
@@ -146,7 +149,6 @@ div #documentIconImg {
     height: 89px;
     position: absolute;
     bottom: 200px;
-    z-index: 1;
     -webkit-animation: sides 10.63s linear infinite;
     -moz-animation: sides 10.63s linear infinite;
     animation: sides 10.63s linear infinite;
