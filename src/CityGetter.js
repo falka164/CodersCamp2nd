@@ -135,7 +135,7 @@ export default class CityGetter {
     }
 
     generateList5days = function (data) {
-        let tempDesc = (data.list[0].main.temp - 273.15);
+        let tempDesc = (data.list[0].main.temp - 273.15).toFixed(2);
         let iconDesc = data.list[0].weather[0].icon;
         let weatherIcon = document.getElementById("in5daysIconImg");
         weatherIcon.src = "http://openweathermap.org/img/w/" + iconDesc + ".png";
@@ -145,7 +145,7 @@ export default class CityGetter {
     }
 
     generateList0days = function (data) {
-        let tempDesc = (data.main.temp - 273.15);
+        let tempDesc = (data.main.temp - 273.15).toFixed(2);
         let iconDesc = data.weather[0].icon;
         let weatherIcon = document.getElementById("in0daysIconImg");
         weatherIcon.src = "http://openweathermap.org/img/w/" + iconDesc + ".png";
