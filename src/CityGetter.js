@@ -136,6 +136,9 @@ export default class CityGetter {
 
     generateList5days = function (data) {
         let tempDesc = (data.list[0].main.temp - 273.15);
+        let iconDesc = data.list[0].weather[0].icon;
+        let weatherIcon = document.getElementById("in5daysIconImg");
+        weatherIcon.src = "http://openweathermap.org/img/w/" + iconDesc + ".png";
         this.generateData5days('data7', tempDesc);
         let data7 = document.getElementById('data7');
         data7.innerHTML = "Temperatura:  " + data7.innerHTML + "°C";
@@ -143,6 +146,9 @@ export default class CityGetter {
 
     generateList0days = function (data) {
         let tempDesc = (data.main.temp - 273.15);
+        let iconDesc = data.weather[0].icon;
+        let weatherIcon = document.getElementById("in0daysIconImg");
+        weatherIcon.src = "http://openweathermap.org/img/w/" + iconDesc + ".png";
         this.generateData0days('data8', tempDesc);
         let data8 = document.getElementById('data8');
         data8.innerHTML = "Temperatura:  " + data8.innerHTML + "°C";
@@ -178,8 +184,16 @@ export default class CityGetter {
 
     clearContainer() {
         let container = document.getElementById('dataBox');
+        let container5days = document.getElementById('in5daysTemperature');
+        let container0days = document.getElementById('in0daysTemperature');
         while (container.firstChild) {
             container.removeChild(container.firstChild);
+        }
+        while (container5days.firstChild) {
+            container5days.removeChild(container5days.firstChild);
+        }
+        while (container0days.firstChild) {
+            container0days.removeChild(container0days.firstChild);
         }
     }
     createRain(number) {
