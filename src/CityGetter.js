@@ -18,41 +18,36 @@ export default class CityGetter {
     getJSONfromAPI() {
         return axios.get(this.createLink());
     }
-	
- weatherId = function(id) {
+
+    weatherId = function (id) {
         console.log(id);
-      
-          if (id >=600 && id <=622){
-              console.log("Śnieg");
-			    this.generateData('data1', "Śnieg");
-		  }
-            else if (id == 800) {
-                console.log("Czyste niebo");
-                this.generateData('data1', "Czyste niebo");
-			}
-            else if (id >=801 && id <=805) {
-                console.log("Lekkie zachmurzenie");
-                this.generateData('data1', "Lekkie zachmurzenie");
-			}
-            else if (id >= 701 && id < 782) {
-                console.log("Możliwa mgła");
-                this.generateData('data1', "Możliwa mgła");
-			}
-            else if  (id >= 500 && id < 532) {
-                console.log("Deszcz");
-                this.generateData('data1', "Deszcz");
-			}
-            else if (id >= 300 && id < 322) {
-                console.log("Mżawka");
-                this.generateData('data1', "Mżawka");
-			}
-            else if  (id >= 200 && id < 233) {
-                console.log("Burza");
-			this.generateData('data1', "Burza");}
-            else {
-			console.log("Something went wrong.....");
-			this.generateData('data1', "Something went wrong.....");}
-        
+
+        if (id >= 600 && id <= 622) {
+            console.log("Śnieg");
+            this.generateData('data1', "Śnieg");
+        } else if (id == 800) {
+            console.log("Czyste niebo");
+            this.generateData('data1', "Czyste niebo");
+        } else if (id >= 801 && id <= 805) {
+            console.log("Lekkie zachmurzenie");
+            this.generateData('data1', "Lekkie zachmurzenie");
+        } else if (id >= 701 && id < 782) {
+            console.log("Możliwa mgła");
+            this.generateData('data1', "Możliwa mgła");
+        } else if (id >= 500 && id < 532) {
+            console.log("Deszcz");
+            this.generateData('data1', "Deszcz");
+        } else if (id >= 300 && id < 322) {
+            console.log("Mżawka");
+            this.generateData('data1', "Mżawka");
+        } else if (id >= 200 && id < 233) {
+            console.log("Burza");
+            this.generateData('data1', "Burza");
+        } else {
+            console.log("Something went wrong.....");
+            this.generateData('data1', "Something went wrong.....");
+        }
+
     };
 
     searchBtn() {
@@ -72,8 +67,8 @@ export default class CityGetter {
         this.getJSONfromAPI()
             .then((response) => {
                 console.log(response);
-            
-				this.weatherId(response.data.weather[0].id); 
+
+                this.weatherId(response.data.weather[0].id);
                 this.generateList(response.data);
 
             })
@@ -90,7 +85,10 @@ export default class CityGetter {
         let data = document.createElement('p');
         data.id = x;
         data.innerHTML = content.toString();
-        document.getElementById("dataBox").appendChild(data);
+        document.getElementById("dataBox").appendChild(data).addEventListener('click', () => {
+            this.showDetails(content)
+        }, false);
+
     }
 
     generateList = function (data) {
@@ -104,20 +102,24 @@ export default class CityGetter {
         let data3 = document.getElementById('data3');
         data3.innerHTML = 'Ciśnienie: ' + data3.innerHTML + " hPa";
 
+
         let humidityDesc = data.main.humidity;
         this.generateData('data4', humidityDesc);
         let data4 = document.getElementById('data4');
         data4.innerHTML = 'Wilgotność: ' + data4.innerHTML + " %";
+
 
         let cloudsDesc = data.clouds.all;
         this.generateData('data5', cloudsDesc);
         let data5 = document.getElementById('data5');
         data5.innerHTML = 'Zachmurzenie nieba: ' + data5.innerHTML + " %";
 
+
         let windDesc = data.wind.speed;
         this.generateData('data6', windDesc);
         let data6 = document.getElementById('data6');
         data6.innerHTML = 'Prędkość wiatru: ' + data6.innerHTML + " m/s";
+        data6.addEventListener("click", this.showData);
 
     };
 
@@ -127,23 +129,10 @@ export default class CityGetter {
             container.removeChild(container.firstChild);
         }
     }
-	
-	
-	
-	 doMagic() {
+
+    showDetails(data) {
         let m = document.getElementById("overall");
-        m.firstChild.nodeValue = p.textContent;
-		console.log(doMagic());
+        m.innerHTML = data;
     }
-    getDataListAndShowMagic() {
-        let magic = document.dataBox.getData;
-        magic.addEventListener('click', this.doMagic);
-		console.log(getDataListAndShowMagic());
-    }
-	
-	
-};
 
-
-
-
+}
