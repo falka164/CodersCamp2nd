@@ -182,6 +182,7 @@ export default class CityGetter {
         let container = document.getElementById('dataBox');
         let container5days = document.getElementById('in5daysTemperature');
         let container0days = document.getElementById('in0daysTemperature');
+        if (!$('.dropItems').empty()) $('.dropItems').remove();
         while (container.firstChild) {
             container.removeChild(container.firstChild);
         }
