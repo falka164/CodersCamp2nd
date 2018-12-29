@@ -3,9 +3,41 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   </head>
   <body>
     <div class="container">
+      <div id="checkWeatherWrapper">
+        <div id="checkWeatherTitle"><i class="fas fa-cloud-sun"></i> Check the weather of your city!</div>
+        <div id="checkWeatherButton"><i class="fa fa-heart"></i> Check the weather</div>
+      </div>
+      <div id="wrapper">
+        <div id="closeWeatherButton"><i class="far fa-window-close"></i></div>
+        <div id="logo"><i class="fas fa-cloud-sun"></i> WeatherApp</div>
+        <div id="citySearchBox">
+          <input type="search" id="citySearch" placeholder="Type your city here...">
+          <button type="submit" id="citySearchButton"><i class="fab fa-searchengin"></i></button>
+          <div id="searchErrorMessage"></div>
+        </div>
+        <div id="cityWeatherElements">
+          <div id="cityWeatherDetails">
+            <div>Name of the city: <span id="cityName"></span></div>
+            <div>Weather: <span id="cityWeather"></span></div>
+            <div>More info: <span id="cityDescription"></span></div>
+            <div>Humidity: <span id="cityHumidity"></span></div>
+            <div>Pressure: <span id="cityPressure"></span></div>
+            <div>Temperature: <span id="cityTemp"></span></div>
+            <div>Max temperature: <span id="cityTempMax"></span></div>
+            <div>Min temperature: <span id="cityTempMin"></span></div>
+          </div>
+          <div id="cityWeatherChart">
+            <div id="boxChart">
+              <canvas id="myChart" width="1200" height="500"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="/bundle.js"></script>

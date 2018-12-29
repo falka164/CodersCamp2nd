@@ -1,0 +1,181 @@
+body {
+    background-image: repeating-linear-gradient(45deg, #00000000 0, #00000000 32px, rgba(255,255,255,0.7) 32px, rgba(255,255,255,0.7) 44px, #00000000 44px, #00000000 56px, rgba(255,255,255,0.7) 56px, rgba(255,255,255,0.7) 68px, #00000000 0), repeating-linear-gradient(-45deg, #00000000 0, #00000000 32px, rgba(255,255,255,0.7) 32px, rgba(255,255,255,0.7) 44px, #00000000 44px, #00000000 56px, rgba(255,255,255,0.7) 56px, rgba(255,255,255,0.7) 68px, #00000000 0), linear-gradient(to bottom left, #FC354C, #0ABFBC);
+    background-size:100% 200%;
+    margin:0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px !important;
+}
+
+#cityWeatherChart, #citySearchBox {
+    display: flex;
+    justify-content: center;
+}
+
+.weatherMainDetails {
+    color:white;
+}
+
+#cityWeatherDetails {
+    text-align: center;
+    color:lawngreen;
+}
+
+#citySearchBox {
+    height:52px;
+}
+
+#citySearch {
+  border-radius: 2px;
+  padding: 1.4rem 2rem 1.6rem;
+  background-color:rgba(57, 63, 84, 0.8);
+  width:300px;
+  border-radius: 2px;
+  color:lawngreen;
+  padding-left:30px;
+  font-size: 18px;
+  border-bottom: 2px solid white;
+  border-right: none;
+  border-top: 2px solid rgba(255, 167, 0, 0.6);
+  border-left: 2px solid rgba(255, 167, 0, 0.6);
+} 
+
+#citySearch:focus {
+  border-bottom: 2px solid lawngreen;
+  border-left: 2px solid lawngreen;
+}
+
+#boxChart {
+    width:1200px;
+    height: 500px;
+}
+
+#searchErrorMessage {
+    line-height: 52px;
+    margin-left: 10px;
+    color: orange;
+    font-size: 18px;
+}
+
+#citySearchButton {
+    width:50px;
+    cursor: pointer;
+    transition:2s;
+    font-size: 28px;
+}
+
+#citySearchButton:hover {
+    transition:2s;
+    background-color:#67cc05;
+    color:black;
+}
+
+@keyframes in {
+    0% { transform: scale(0) rotate(12deg); opacity: 0; visibility: hidden;  }
+    100% { transform: scale(1) rotate(0); opacity: 1; visibility: visible; }
+  }
+  
+@keyframes out {
+    0% { transform: scale(1) rotate(0); opacity: 1; visibility: visible; }
+    100% { transform: scale(0) rotate(-12deg); opacity: 0; visibility: hidden;  }
+}
+
+#cityName, #cityWeather, #cityDescription, #cityHumidity, 
+#cityPressure, #cityTemp, #cityTempMax, #cityTempMin {
+    color: lawngreen;
+    font-size: 20px;
+}
+
+#logo {
+    font-size: 36px;
+    color:white;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#wrapper {
+    display: none;
+    background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
+    width: 100vw;
+    height: 100vh;
+    animation: in 700ms ease both;
+}
+
+#checkWeatherWrapper {
+    border-radius: 5%;
+    width: 600px;
+    height: 600px;
+    background-color: #504242ed;
+    position: relative;
+    animation: in 700ms ease both;
+}
+
+#checkWeatherButton {
+    background-color:#d2ad04;
+    height: 50px;
+    width:200px;
+    transition:2s;
+    position: absolute;
+    top: 300px;
+    left: 200px;
+    line-height: 50px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+#checkWeatherButton:hover {
+    background-color:#ffd205;
+    color:black;
+    transition:2s;
+    cursor:pointer;
+}
+
+#closeWeatherButton {
+    height: 50px;
+    width:100px;
+    transition:2s;
+    font-weight: bold;
+    border-radius: 5%;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+}
+
+#closeWeatherButton:hover {
+    background-color: green;
+    transition:2s;
+    cursor:pointer;
+}
+
+#checkWeatherTitle {
+    position: absolute;
+    top: 200px;
+    left: 90px;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#cityWeatherDetails {
+    width: 330px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom:30px;
+    background-color: rgb(41, 43, 60);
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    border:2px solid white;
+}
